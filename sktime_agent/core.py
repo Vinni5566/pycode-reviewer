@@ -14,7 +14,7 @@ def generate_response(query: str, use_agent: bool = False, provider: str = "goog
     if use_agent:
         from .agent import SktimeAgent
         # Default model for google if selected
-        model = "gemini-1.5-flash" if provider == "google" else "gpt-4o"
+        model = "gemini-2.5-flash-lite" if provider == "google" else "gpt-4o"
         agent = SktimeAgent(model_name=model, provider=provider)
         return agent.generate_workflow(query)
     

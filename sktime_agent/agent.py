@@ -1,4 +1,6 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
 from typing import List
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
