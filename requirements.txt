@@ -1,0 +1,4 @@
+click
+pydantic
+rich
+python-dotenv
