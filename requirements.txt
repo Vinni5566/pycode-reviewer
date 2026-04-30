@@ -12,3 +12,4 @@ ipykernel
 pandas
 sktime
 requests
+langchain-huggingface
