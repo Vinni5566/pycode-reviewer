@@ -25,17 +25,23 @@ pip install -r requirements.txt
 ```
 
 ### Usage
+#### CLI
 ```bash
 python -m sktime_agent.cli "forecast sales for the next 12 months"
 ```
 
+#### Streamlit Dashboard
+```bash
+streamlit run sktime_agent/app.py
+```
+
 ## Project Roadmap (ESoC Alignment)
 - [x] PR 1: Project Foundation & CLI Skeleton
-- [ ] PR 2: sktime Knowledge Loader (Ingestion Pipeline)
-- [ ] PR 3: Retrieval System (RAG with FAISS)
-- [ ] PR 4: LLM Agent Core (Reasoning + Generation)
-- [ ] PR 5: Tool Layer (sktime Agentic Interface)
-- [ ] PR 6: Interactive Demo (Streamlit/CLI UI)
+- [x] PR 2: sktime Knowledge Loader (Ingestion Pipeline)
+- [x] PR 3: Retrieval System (RAG with FAISS)
+- [x] PR 4: LLM Agent Core (Reasoning + Generation)
+- [x] PR 5: Tool Layer (sktime Agentic Interface)
+- [x] PR 6: Interactive Demo (Streamlit/CLI UI)
 
 ## License
 MIT
