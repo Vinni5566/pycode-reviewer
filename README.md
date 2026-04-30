@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 🌟 Overview
-The **Agentic sktime Assistant** is an agentic interface layer for sktime enabling LLM-driven construction of forecasting pipelines using native sktime estimators and workflows.
+The **Agentic sktime Assistant** is an agentic interface layer for sktime enabling LLM-driven construction of forecasting pipelines using native sktime estimators and workflows. It significantly reduces the barrier for new users to construct correct sktime pipelines directly from natural language.
 
 This project is developed as part of the **European Summer of Code (ESoC) 2026**.
 
@@ -18,16 +18,16 @@ This project is developed as part of the **European Summer of Code (ESoC) 2026**
 - **CLI interface:** A command-line tool for developers.
 
 ## 🧠 sktime Integration Layer
-Wraps core sktime estimators as callable tools:
-- `ForecastingPipelineTool`
-- `ModelSelectionTool`
-- `EvaluationTool`
-
-Converts LLM outputs into executable sktime pipelines. Designed for future compatibility with `sktime-mcp`.
+Wraps core sktime estimators as callable tools (e.g., an ARIMA forecasting wrapper).
+Converts LLM outputs into executable sktime pipelines and includes basic validation of generated pipelines using sktime evaluation utilities. Designed for future compatibility with `sktime-mcp`.
 
 ---
 
 ## 🛠️ System Architecture
+
+**Box Flow Overview:**
+`[User Query] ➔ [Intent Classifier] ➔ [sktime Retriever] ➔ [LLM Agent] ➔ [sktime Tool Layer] ➔ [Executable Pipeline]`
+
 ```mermaid
 graph TD
     A[User Query] --> B[Intent Classifier]
@@ -111,7 +111,7 @@ y_pred = model.predict(fh=ForecastingHorizon([1, 2, ..., 12]))
 ## 📝 Roadmap & Future Extensions
 - [ ] **Full sktime-mcp Integration:** Direct connection to the `sktime-mcp` server.
 - [ ] **Data-Aware Pipeline Building:** Allowing the agent to inspect user data before suggesting estimators.
-- [ ] **Foundation Model Support:** Integrating models like `Chronos` or `Lag-Llama` into the agent's toolbox.
+- [ ] **Experimental support for foundation models:** Investigating potential wrappers for models like `Chronos` or `Lag-Llama`.
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
