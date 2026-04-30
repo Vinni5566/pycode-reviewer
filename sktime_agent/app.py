@@ -43,25 +43,24 @@ st.markdown("""
 st.title("🤖 Agentic sktime Assistant")
 st.markdown("*Bridging the gap between natural language and time-series pipelines.*")
 
-# Sidebar for ESoC Alignment and Info
+# Sidebar for Project Info
 with st.sidebar:
-    st.image("https://raw.githubusercontent.com/sktime/sktime/main/docs/source/_static/img/sktime-logo.png", width=150)
-    st.header("ESoC 2024 Project")
+    st.header("About the Assistant")
     st.markdown("""
-    This assistant is part of the **Enabling sktime Ecosystem (ESoC)** initiative.
+    The **Agentic sktime Assistant** is an intelligent tool designed to automate the creation of complex time-series workflows.
     
-    ### 🎯 Target Tracks
-    - **Agentic Forecaster**
-    - **Agentic Tooling**
-    - **LLM-Driven Pipelines**
+    ### 🚀 Key Capabilities
+    - **Intent Understanding:** Natural language to pipeline conversion.
+    - **Contextual Retrieval:** Grounded in sktime documentation.
+    - **Automated Coding:** Generates ready-to-run sktime snippets.
     
-    ### 🛠️ Core Technology
+    ### 🛠️ Core Stack
     - **RAG:** FAISS + Sentence Transformers
-    - **Agents:** LangChain + OpenAI/Gemini
+    - **Agents:** LangChain + LLM
     - **Framework:** sktime
     """)
     st.divider()
-    st.info("Check the [GitHub README](https://github.com/Vinni5566/pycode-reviewer) for full documentation.")
+    st.info("Visit the [GitHub Repository](https://github.com/Vinni5566/pycode-reviewer) for more details.")
 
 # Main Interface
 query = st.text_input("Enter your time series task (e.g., 'forecast sales for 12 months')", 
@@ -94,4 +93,4 @@ if st.button("Generate Workflow"):
         st.warning("Please enter a query first.")
 
 st.markdown("---")
-st.caption("Powered by **sktime** and the **ESoC Agentic Track**.")
+st.caption("Intelligent Time Series Workflow Generator powered by sktime.")
