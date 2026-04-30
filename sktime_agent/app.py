@@ -73,7 +73,7 @@ with st.sidebar:
        `GOOGLE_API_KEY=your_key_here`
     """)
     st.divider()
-    st.info("Visit the [GitHub Repository](https://github.com/Vinni5566/pycode-reviewer) for more details.")
+    st.info("Visit the [GitHub Repository](https://github.com/Vinni5566/sktime-agent) for more details.")
 
 # Main Interface
 query = st.text_input("Enter your time series task (e.g., 'forecast sales for 12 months')", 

@@ -37,8 +37,8 @@ graph TD
 ## 📦 Installation
 ```bash
 # Clone the repository
-git clone https://github.com/Vinni5566/pycode-reviewer.git
-cd pycode-reviewer
+git clone https://github.com/Vinni5566/sktime-agent.git
+cd sktime-agent
 
 # Install dependencies
 pip install -r requirements.txt
