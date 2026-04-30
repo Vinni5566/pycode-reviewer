@@ -30,15 +30,17 @@ Output your response as a valid JSON object with the following keys:
 - evaluation: An optional evaluation snippet.
 """
 
+from .tools import SKTIME_TOOLS
+
 class SktimeAgent:
     def __init__(self, model_name="gpt-4o", provider="openai"):
         self.retriever = SktimeRetriever()
         self.parser = JsonOutputParser(pydantic_object=AgentResponse)
         
         if provider == "openai":
-            self.llm = ChatOpenAI(model=model_name, temperature=0)
+            self.llm = ChatOpenAI(model=model_name, temperature=0).bind_tools(SKTIME_TOOLS)
         elif provider == "google":
-            self.llm = ChatGoogleGenerativeAI(model=model_name, temperature=0)
+            self.llm = ChatGoogleGenerativeAI(model=model_name, temperature=0).bind_tools(SKTIME_TOOLS)
         else:
             raise ValueError(f"Unsupported provider: {provider}")
 
