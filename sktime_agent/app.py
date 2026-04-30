@@ -60,6 +60,10 @@ with st.sidebar:
     - **Framework:** sktime
     """)
     st.divider()
+    st.header("Settings")
+    provider = st.radio("LLM Provider", ["openai", "google"], index=1)
+    st.info("Ensure you have set the corresponding API key in your .env file.")
+    st.divider()
     st.info("Visit the [GitHub Repository](https://github.com/Vinni5566/pycode-reviewer) for more details.")
 
 # Main Interface
@@ -72,7 +76,7 @@ if st.button("Generate Workflow"):
     if query:
         with st.spinner("Analyzing intent and generating sktime pipeline..."):
             try:
-                response = generate_response(query, use_agent=use_agent)
+                response = generate_response(query, use_agent=use_agent, provider=provider)
                 
                 col1, col2 = st.columns([1, 1])
                 

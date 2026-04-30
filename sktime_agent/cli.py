@@ -9,7 +9,8 @@ console = Console()
 @click.command()
 @click.argument('query')
 @click.option('--agent', is_flag=True, help="Use real LLM agent instead of dummy response")
-def main(query: str, agent: bool):
+@click.option('--provider', default="google", type=click.Choice(['openai', 'google']), help="LLM provider to use")
+def main(query: str, agent: bool, provider: str):
     """
     Agentic sktime Assistant - Conversational Workflow Generator
     """
@@ -17,7 +18,7 @@ def main(query: str, agent: bool):
     
     with console.status("[bold green]Generating sktime workflow..."):
         from .core import generate_response
-        response = generate_response(query, use_agent=agent)
+        response = generate_response(query, use_agent=agent, provider=provider)
     
     console.print(Panel(response.explanation, title="Explanation", expand=False))
     

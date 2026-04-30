@@ -7,13 +7,15 @@ class AgentResponse(BaseModel):
     code: str
     evaluation: Optional[str] = None
 
-def generate_response(query: str, use_agent: bool = False) -> AgentResponse:
+def generate_response(query: str, use_agent: bool = False, provider: str = "google") -> AgentResponse:
     """
     Main entry point for generating responses.
     """
     if use_agent:
         from .agent import SktimeAgent
-        agent = SktimeAgent()
+        # Default model for google if selected
+        model = "gemini-1.5-flash" if provider == "google" else "gpt-4o"
+        agent = SktimeAgent(model_name=model, provider=provider)
         return agent.generate_workflow(query)
     
     return AgentResponse(
