@@ -1,4 +1,10 @@
 import streamlit as st
+import sys
+import os
+
+# Ensure the project root is in the python path for local imports
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from sktime_agent.core import generate_response
 
 st.set_page_config(
