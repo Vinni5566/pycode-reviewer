@@ -2,3 +2,13 @@ click
 pydantic
 rich
 python-dotenv
+langchain
+langchain-community
+langchain-text-splitters
+faiss-cpu
+sentence-transformers
+nbformat
+ipykernel
+pandas
+sktime
+requests
