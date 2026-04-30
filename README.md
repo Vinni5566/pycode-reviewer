@@ -35,13 +35,13 @@ python -m sktime_agent.cli "forecast sales for the next 12 months"
 streamlit run sktime_agent/app.py
 ```
 
-## Project Roadmap (ESoC Alignment)
-- [x] PR 1: Project Foundation & CLI Skeleton
-- [x] PR 2: sktime Knowledge Loader (Ingestion Pipeline)
-- [x] PR 3: Retrieval System (RAG with FAISS)
-- [x] PR 4: LLM Agent Core (Reasoning + Generation)
-- [x] PR 5: Tool Layer (sktime Agentic Interface)
-- [x] PR 6: Interactive Demo (Streamlit/CLI UI)
+## Project Roadmap
+- [x] Project Foundation & CLI Skeleton
+- [x] sktime Knowledge Loader (Ingestion Pipeline)
+- [x] Retrieval System (RAG with FAISS)
+- [x] LLM Agent Core (Reasoning + Generation)
+- [x] Tool Layer (sktime Agentic Interface)
+- [x] Interactive Demo (Streamlit/CLI UI)
 
 ## License
 MIT
