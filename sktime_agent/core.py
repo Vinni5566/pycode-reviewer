@@ -7,15 +7,18 @@ class AgentResponse(BaseModel):
     code: str
     evaluation: Optional[str] = None
 
-def generate_dummy_response(query: str) -> AgentResponse:
+def generate_response(query: str, use_agent: bool = False) -> AgentResponse:
     """
-    Dummy generator for MVP v1. 
-    Returns a template-based response regardless of input.
+    Main entry point for generating responses.
     """
+    if use_agent:
+        from .agent import SktimeAgent
+        agent = SktimeAgent()
+        return agent.generate_workflow(query)
+    
     return AgentResponse(
         task_type="forecasting",
-        explanation="I've generated a simple ARIMA forecasting pipeline using sktime. "
-                    "This pipeline scales the data before fitting the model.",
+        explanation="[MVP Dummy] I've generated a simple ARIMA forecasting pipeline using sktime.",
         code="from sktime.forecasting.arima import ARIMA\n"
              "from sktime.transformations.series.scaler import Scaler\n"
              "from sktime.forecasting.compose import ForecastingPipeline\n\n"
@@ -28,3 +31,6 @@ def generate_dummy_response(query: str) -> AgentResponse:
         evaluation="from sktime.performance_metrics.forecasting import mean_absolute_percentage_error\n"
                    "mape = mean_absolute_percentage_error(y_test, y_pred)"
     )
+
+def generate_dummy_response(query: str) -> AgentResponse:
+    return generate_response(query, use_agent=False)

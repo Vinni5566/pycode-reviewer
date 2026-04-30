@@ -13,3 +13,5 @@ pandas
 sktime
 requests
 langchain-huggingface
+langchain-openai
+langchain-google-genai

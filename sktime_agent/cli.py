@@ -8,14 +8,16 @@ console = Console()
 
 @click.command()
 @click.argument('query')
-def main(query: str):
+@click.option('--agent', is_flag=True, help="Use real LLM agent instead of dummy response")
+def main(query: str, agent: bool):
     """
     Agentic sktime Assistant - Conversational Workflow Generator
     """
     console.print(f"[bold blue]Query:[/bold blue] {query}\n")
     
     with console.status("[bold green]Generating sktime workflow..."):
-        response = generate_dummy_response(query)
+        from .core import generate_response
+        response = generate_response(query, use_agent=agent)
     
     console.print(Panel(response.explanation, title="Explanation", expand=False))
     
