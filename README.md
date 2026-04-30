@@ -1,11 +1,11 @@
 # 🤖 Agentic sktime Assistant
-### *LLM-driven Time Series Workflow Generator & Agentic Pipeline Builder*
+### *Standardized Tool Abstraction Layer for sktime Workflows*
 
 [![sktime](https://img.shields.io/badge/powered%20by-sktime-orange.svg)](https://github.com/sktime/sktime)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 🌟 Overview
-The **Agentic sktime Assistant** is an agentic interface layer for sktime enabling LLM-driven construction of forecasting pipelines using native sktime estimators and workflows. It significantly reduces the barrier for new users to construct correct sktime pipelines directly from natural language.
+The **Agentic sktime Assistant** is an agentic interface layer for sktime enabling LLM-driven construction of forecasting pipelines using native sktime estimators and workflows. It significantly reduces the barrier for new users to construct correct sktime pipelines directly from natural language. This project explores a reusable abstraction layer for agent-driven interaction with sktime estimators, designed as a direct contribution to the broader sktime ecosystem.
 
 This project is developed as part of the **European Summer of Code (ESoC) 2026**.
 
@@ -99,11 +99,17 @@ forecast monthly sales for 12 months
 **Output:**
 ```python
 from sktime.forecasting.arima import ARIMA
+from sktime.transformations.series.detrend import Deseasonalizer
+from sktime.forecasting.compose import ForecastingPipeline
 from sktime.forecasting.base import ForecastingHorizon
 
-model = ARIMA()
-model.fit(y_train)
-y_pred = model.predict(fh=ForecastingHorizon([1, 2, ..., 12]))
+pipeline = ForecastingPipeline([
+    ("deseasonalizer", Deseasonalizer(sp=12)),
+    ("forecaster", ARIMA())
+])
+
+pipeline.fit(y_train)
+y_pred = pipeline.predict(fh=ForecastingHorizon([1, 2, ..., 12]))
 ```
 
 ---
