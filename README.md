@@ -2,22 +2,12 @@
 ### *LLM-driven Time Series Workflow Generator & Agentic Pipeline Builder*
 
 [![sktime](https://img.shields.io/badge/powered%20by-sktime-orange.svg)](https://github.com/sktime/sktime)
-[![ESoC 2024](https://img.shields.io/badge/ESoC-2024-blue.svg)](https://github.com/sktime/sktime/wiki/ESoC-2024)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 🌟 Overview
 The **Agentic sktime Assistant** is a specialized agentic framework designed to bridge the gap between natural language intent and executable `sktime` workflows. It addresses the steep learning curve of the `sktime` ecosystem by using LLMs to autonomously construct forecasting, classification, and transformation pipelines.
 
-This project is a direct contribution to the **Enabling sktime Ecosystem (ESoC)** initiative, specifically targeting the **Agentic Forecaster** and **Agentic Tooling** tracks.
-
----
-
-## 🎯 ESoC Alignment & Eligibility
-This project fulfills the eligibility criteria for the `sktime` agentic track by implementing:
-- **Agentic Pipeline Generation:** Converts English language prompts into valid `sktime` estimators and `ForecastingPipeline` objects.
-- **RAG-Grounded Reasoning:** Utilizes a Retrieval-Augmented Generation (RAG) system over official `sktime` tutorials to ensure syntax correctness.
-- **MCP-Ready Architecture:** Designed with a tool-calling layer compatible with the **Model Context Protocol (MCP)**, allowing it to integrate with prototypes like `sktime-mcp`.
-- **Intelligent Evaluation:** Automatically generates performance metrics (e.g., MAPE) based on the suggested workflow.
+This project is developed as part of the **European Summer of Code (ESoC) 2026**.
 
 ---
 
@@ -56,6 +46,17 @@ pip install -r requirements.txt
 
 ---
 
+## 🔑 Gemini API Setup
+This project uses **Gemini 1.5 Flash** for agentic reasoning. To set it up:
+1. Obtain a free API Key from **[Google AI Studio](https://aistudio.google.com/app/apikey)**.
+2. Create a `.env` file in the root directory.
+3. Add your key to the file:
+   ```env
+   GOOGLE_API_KEY=your_key_here
+   ```
+
+---
+
 ## 🎮 Usage
 
 ### 1. Ingest Knowledge
@@ -90,4 +91,4 @@ python -m sktime_agent.cli "compare ARIMA vs Exponential Smoothing" --agent
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-**Built for the Enabling sktime Ecosystem (ESoC) 2024.**
+**Built for the European Summer of Code (ESoC) 2026.**
