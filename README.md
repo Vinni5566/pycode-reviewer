@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 🌟 Overview
-The **Agentic sktime Assistant** is a specialized agentic framework designed to bridge the gap between natural language intent and executable `sktime` workflows. It addresses the steep learning curve of the `sktime` ecosystem by using LLMs to autonomously construct forecasting, classification, and transformation pipelines.
+The **Agentic sktime Assistant** is an agentic interface layer for sktime enabling LLM-driven construction of forecasting pipelines using native sktime estimators and workflows.
 
 This project is developed as part of the **European Summer of Code (ESoC) 2026**.
 
@@ -13,10 +13,17 @@ This project is developed as part of the **European Summer of Code (ESoC) 2026**
 
 ## 🚀 Key Features
 - **Intent Recognition:** Autonomously classifies queries into tasks (Forecasting, Anomaly Detection, etc.).
-- **Smart Retrieval:** Uses FAISS to pull relevant code snippets from the `sktime` documentation.
-- **Dynamic Tooling:** Exposes `sktime` primitives as callable tools for LLM agents.
-- **Streamlit Dashboard:** A premium, interactive UI for experimenting with agentic workflows.
-- **CLI Interface:** A robust command-line tool for developers.
+- **FAISS-based retrieval system:** Pulls relevant code snippets from the `sktime` documentation.
+- **Streamlit interface:** An interactive UI for experimenting with agentic workflows.
+- **CLI interface:** A command-line tool for developers.
+
+## 🧠 sktime Integration Layer
+Wraps core sktime estimators as callable tools:
+- `ForecastingPipelineTool`
+- `ModelSelectionTool`
+- `EvaluationTool`
+
+Converts LLM outputs into executable sktime pipelines. Designed for future compatibility with `sktime-mcp`.
 
 ---
 
@@ -27,8 +34,8 @@ graph TD
     B --> C[FAISS Retriever]
     C --> D[sktime Docs / Tutorials]
     D --> E[LLM Agent]
-    E --> F[Agentic Tools]
-    F --> G[sktime Pipeline Code]
+    E --> F[sktime Tool Layer]
+    F --> G[Executable Pipeline]
     G --> H[Execution / Explanation]
 ```
 
@@ -66,7 +73,7 @@ python scripts/fetch_docs.py
 ```
 
 ### 2. Interactive Dashboard
-Run the premium Streamlit UI:
+Run the Streamlit interface:
 ```bash
 streamlit run sktime_agent/app.py
 ```
@@ -78,6 +85,25 @@ python -m sktime_agent.cli "forecast sales for 12 months"
 
 # Get a real LLM-reasoned workflow (Requires API Key)
 python -m sktime_agent.cli "compare ARIMA vs Exponential Smoothing" --agent
+```
+
+---
+
+## 💡 Example
+
+**Input:**
+```text
+forecast monthly sales for 12 months
+```
+
+**Output:**
+```python
+from sktime.forecasting.arima import ARIMA
+from sktime.forecasting.base import ForecastingHorizon
+
+model = ARIMA()
+model.fit(y_train)
+y_pred = model.predict(fh=ForecastingHorizon([1, 2, ..., 12]))
 ```
 
 ---
