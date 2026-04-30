@@ -41,8 +41,29 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 st.title("🤖 Agentic sktime Assistant")
-st.subheader("LLM-driven Time Series Workflow Generator")
+st.markdown("*Bridging the gap between natural language and time-series pipelines.*")
 
+# Sidebar for ESoC Alignment and Info
+with st.sidebar:
+    st.image("https://raw.githubusercontent.com/sktime/sktime/main/docs/source/_static/img/sktime-logo.png", width=150)
+    st.header("ESoC 2024 Project")
+    st.markdown("""
+    This assistant is part of the **Enabling sktime Ecosystem (ESoC)** initiative.
+    
+    ### 🎯 Target Tracks
+    - **Agentic Forecaster**
+    - **Agentic Tooling**
+    - **LLM-Driven Pipelines**
+    
+    ### 🛠️ Core Technology
+    - **RAG:** FAISS + Sentence Transformers
+    - **Agents:** LangChain + OpenAI/Gemini
+    - **Framework:** sktime
+    """)
+    st.divider()
+    st.info("Check the [GitHub README](https://github.com/Vinni5566/pycode-reviewer) for full documentation.")
+
+# Main Interface
 query = st.text_input("Enter your time series task (e.g., 'forecast sales for 12 months')", 
                      placeholder="How can I help you with sktime today?")
 
@@ -57,15 +78,15 @@ if st.button("Generate Workflow"):
                 col1, col2 = st.columns([1, 1])
                 
                 with col1:
-                    st.info(f"**Task Type:** {response.task_type.capitalize()}")
-                    st.markdown(f"### Explanation\n{response.explanation}")
+                    st.success(f"**Task Identified:** {response.task_type.capitalize()}")
+                    st.markdown(f"### 💡 Explanation\n{response.explanation}")
                 
                 with col2:
-                    st.markdown("### Generated sktime Code")
+                    st.markdown("### 💻 Generated sktime Code")
                     st.code(response.code, language="python")
                     
                     if response.evaluation:
-                        st.markdown("### Evaluation Snippet")
+                        st.markdown("### 📊 Evaluation Snippet")
                         st.code(response.evaluation, language="python")
             except Exception as e:
                 st.error(f"Error generating response: {str(e)}")
@@ -73,4 +94,4 @@ if st.button("Generate Workflow"):
         st.warning("Please enter a query first.")
 
 st.markdown("---")
-st.markdown("Built for the **Enabling sktime Ecosystem (ESoC)** initiative.")
+st.caption("Powered by **sktime** and the **ESoC Agentic Track**.")
